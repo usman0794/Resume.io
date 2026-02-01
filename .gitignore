@@ -1,0 +1,27 @@
+
+# Node / Vite
+node_modules/
+dist/
+dist-ssr/
+build/
+.vite/
+coverage/
+
+# Environment & Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+firebase-adminsdk*.json
+serviceAccountKey.json
+google-services.json
+secrets.json
+credentials.json
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/settings.json
+
