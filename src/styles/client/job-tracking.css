@@ -1,0 +1,456 @@
+/*
+ * File: src/styles/client/job-tracking.css
+ *
+ * Purpose:
+ *   All styles for the authenticated Job Tracker kanban board:
+ *   JobTrackingPage, BoardHeader, KanbanColumn, TrackerJobCard, AddJobInput.
+ *
+ * Design tokens inherited from app-layout.css:
+ *   --al-brand  : #1A91F0  (primary blue)
+ *   --al-border : #e5e7eb
+ *   --al-bg     : #fafbfc
+ *   --al-surface: #ffffff
+ *
+ * Breakpoints:
+ *   Mobile  : <640px
+ *   Tablet  : 640–1023px
+ *   Desktop : ≥1024px
+ */
+
+/* ════════════════════════════════════════════════════════════════════════════
+   PAGE ROOT  (jtk-page)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jtk-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: var(--al-bg, #fafbfc);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   BOARD HEADER  (jtkh-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jtkh-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: var(--al-surface, #ffffff);
+  border-bottom: 1px solid var(--al-border, #e5e7eb);
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.jtkh-tabs {
+  display: flex;
+  gap: 0;
+}
+
+.jtkh-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s;
+}
+
+.jtkh-tab:hover {
+  color: #374151;
+}
+
+.jtkh-tab-active {
+  color: #111827;
+  font-weight: 700;
+  border-bottom: 2px solid var(--al-brand, #1A91F0);
+}
+
+.jtkh-filter-btn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.jtkh-filter-btn:hover {
+  background: #f3f4f6;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   KANBAN BOARD  (jtk-board)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jtk-board {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  overflow-x: auto;
+  flex: 1;
+  align-items: flex-start;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #e5e7eb transparent;
+}
+
+.jtk-board::-webkit-scrollbar {
+  height: 6px;
+}
+
+.jtk-board::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.jtk-board::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 3px;
+}
+
+.jtk-board::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db;
+}
+
+/* Mobile: vertical stack, no horizontal scroll */
+@media (max-width: 639px) {
+  .jtk-board {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: 14px;
+    padding: 14px 16px 28px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   KANBAN COLUMN  (jtk-column / jtk-col-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jtk-column {
+  flex-shrink: 0;
+  width: 272px;
+  border-radius: 12px;
+  padding: 14px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 140px;
+  transition: box-shadow 0.15s;
+}
+
+/* Mobile: full width, natural height */
+@media (max-width: 639px) {
+  .jtk-column {
+    width: 100%;
+  }
+}
+
+/* Tablet: slightly narrower columns */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .jtk-column {
+    width: 248px;
+  }
+}
+
+/* ── Column color variants (from KANBAN_COLUMNS bgClass) ── */
+.jtk-col-shortlist {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+}
+
+.jtk-col-auto {
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+}
+
+.jtk-col-applied {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+}
+
+.jtk-col-interview {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+}
+
+.jtk-col-offer {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.jtk-col-rejected {
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Column header ── */
+.jtk-col-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 2px;
+  padding: 0 2px;
+}
+
+.jtk-col-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.jtk-col-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.jtk-col-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 1px 7px;
+  flex-shrink: 0;
+}
+
+/* ── Cards list ── */
+.jtk-col-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Empty-column hint ── */
+.jtk-col-empty {
+  font-size: 12px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 18px 8px;
+  margin: 0;
+  border: 1.5px dashed rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* ── "+ Add Job" button ── */
+.jtk-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 9px 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px dashed #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  transition: border-color 0.12s, background 0.12s, color 0.12s;
+  margin-top: 2px;
+}
+
+.jtk-add-btn:hover {
+  border-color: var(--al-brand, #1A91F0);
+  background: rgba(26, 145, 240, 0.06);
+  color: var(--al-brand, #1A91F0);
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ADD JOB INPUT  (aji-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.aji-wrap {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.aji-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #374151;
+  font-family: inherit;
+  background: transparent;
+  line-height: 1.4;
+}
+
+.aji-input::placeholder {
+  color: #9ca3af;
+}
+
+.aji-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aji-confirm {
+  background: var(--al-brand, #1A91F0);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.aji-confirm:hover {
+  background: var(--al-brand-dark, #1580d6);
+}
+
+.aji-confirm:disabled {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.aji-cancel {
+  background: transparent;
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 7px 8px;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+
+.aji-cancel:hover {
+  background: #f3f4f6;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   TRACKER JOB CARD  (tjc-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.tjc-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  cursor: default;
+  transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.tjc-card:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.tjc-card:focus-within {
+  outline: 2px solid var(--al-brand, #1A91F0);
+  outline-offset: 2px;
+}
+
+.tjc-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.tjc-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+  line-height: 1.35;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.tjc-remove {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: background 0.12s, color 0.12s;
+}
+
+.tjc-remove:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.tjc-company {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 3px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tjc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tjc-date {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.tjc-link {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  color: var(--al-brand, #1A91F0);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.tjc-link:hover {
+  text-decoration: underline;
+}
