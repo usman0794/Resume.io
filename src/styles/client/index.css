@@ -1,0 +1,256 @@
+/* ============================================================
+   Client Styles — Merged (no @import chain)
+   ============================================================ */
+
+/* ── home.css ───────────────────────────────────────────── */
+/* ============================================================
+   home.css — Extracted styles for Home page components
+   Import this in HomePage.tsx: import './home.css';
+   DO NOT modify any values — UI must stay identical.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────
+   LandingNavbar — Slide-up & blink animations
+   Source: LandingNavbar.tsx <style> tag
+   ───────────────────────────────────────── */
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-animate-slide-up {
+  animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.navbar-animate-blink {
+  animation: blink 1.05s step-end infinite;
+}
+
+
+/* ─────────────────────────────────────────
+   TestedTemplatesSection — Card layout & animations
+   Source: TestedTemplatesSection.tsx <style> tag
+   ───────────────────────────────────────── */
+
+/* Base Card Styling */
+.tpl-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tpl-text-block {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tpl-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.tpl-users-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.tpl-users-container.active {
+  max-height: 30px;
+  opacity: 1;
+}
+
+.tpl-image-wrapper {
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Mobile Layout (< 768px) */
+.tpl-offset-0 {
+  transform: translateX(-50%);
+  z-index: 30;
+  opacity: 1;
+}
+
+.tpl-offset-0 .tpl-image-wrapper {
+  width: 260px;
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.08);
+}
+
+.tpl-offset-0 .tpl-name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.tpl-offset--1 {
+  transform: translateX(calc(-50% - 18vw));
+  z-index: 20;
+  opacity: 1;
+}
+
+.tpl-offset-1 {
+  transform: translateX(calc(-50% + 18vw));
+  z-index: 20;
+  opacity: 1;
+}
+
+.tpl-offset--1 .tpl-image-wrapper,
+.tpl-offset-1 .tpl-image-wrapper {
+  width: 180px;
+  opacity: 0.6;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.tpl-offset--2 {
+  transform: translateX(calc(-50% - 30vw));
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tpl-offset-2 {
+  transform: translateX(calc(-50% + 30vw));
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tpl-offset--2 .tpl-image-wrapper,
+.tpl-offset-2 .tpl-image-wrapper {
+  width: 140px;
+}
+
+.tpl-offset--3,
+.tpl-offset-3 {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+/* Tablet Layout (>= 768px) */
+@media (min-width: 768px) {
+  .tpl-offset-0 .tpl-image-wrapper {
+    width: 320px;
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.09);
+  }
+
+  .tpl-offset-0 .tpl-name {
+    font-size: 20px;
+  }
+
+  .tpl-offset--1 {
+    transform: translateX(calc(-50% - 240px));
+  }
+
+  .tpl-offset-1 {
+    transform: translateX(calc(-50% + 240px));
+  }
+
+  .tpl-offset--1 .tpl-image-wrapper,
+  .tpl-offset-1 .tpl-image-wrapper {
+    width: 220px;
+    opacity: 0.8;
+  }
+
+  .tpl-offset--2 {
+    transform: translateX(calc(-50% - 390px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tpl-offset-2 {
+    transform: translateX(calc(-50% + 390px));
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .tpl-offset--2 .tpl-image-wrapper,
+  .tpl-offset-2 .tpl-image-wrapper {
+    width: 180px;
+  }
+}
+
+/* Desktop Layout (>= 1024px) */
+@media (min-width: 1024px) {
+  .tpl-offset-0 .tpl-image-wrapper {
+    width: 380px;
+    box-shadow: 0 40px 70px rgba(0, 0, 0, 0.1);
+  }
+
+  .tpl-offset--1 {
+    transform: translateX(calc(-50% - 310px));
+  }
+
+  .tpl-offset-1 {
+    transform: translateX(calc(-50% + 310px));
+  }
+
+  .tpl-offset--1 .tpl-image-wrapper,
+  .tpl-offset-1 .tpl-image-wrapper {
+    width: 250px;
+    opacity: 1;
+  }
+
+  .tpl-offset--2 {
+    transform: translateX(calc(-50% - 560px));
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .tpl-offset-2 {
+    transform: translateX(calc(-50% + 560px));
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .tpl-offset--2 .tpl-image-wrapper,
+  .tpl-offset-2 .tpl-image-wrapper {
+    width: 220px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  }
+}
+/* ── templates.css ─────────────────────────────────────── */
+/* styles/templates.css */
+
+/* Cross-browser solution to hide scrollbar while keeping horizontal scrolling functional */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

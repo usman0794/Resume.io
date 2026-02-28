@@ -1,0 +1,20 @@
+/* styles/templates.css */
+
+/* Cross-browser solution to hide scrollbar while keeping horizontal scrolling functional */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+/* ─── ExamplesCarousel scrollbar hide ───────────────────────────────────────── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── BlogHero scrollbar hide ───────────────────────────────────────────────── */
+.blog-hero-scroll::-webkit-scrollbar { display: none; }
+.blog-hero-scroll { scrollbar-width: none; -ms-overflow-style: none; }

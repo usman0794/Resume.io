@@ -1,0 +1,286 @@
+/* ============================================================
+   auto-apply.css — Styles for /app/auto-apply page
+   Classes: aap-* (page), aah-* (hero), aafg-* (features grid), aaf-* (feature card)
+   ============================================================ */
+
+/* ──────────────────────────────────────────
+   AutoApplyPage  (.aap-*)
+   ────────────────────────────────────────── */
+
+.aap-root {
+  padding: 32px 40px 48px;
+  background: #ffffff;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.aap-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 28px 0;
+}
+
+.aap-hero-wrap {
+  margin-bottom: 32px;
+}
+
+.aap-features-wrap {
+  /* sits directly below hero */
+}
+
+/* ──────────────────────────────────────────
+   AutoApplyHero  (.aah-*)
+   Card: light blue-gray bg, 3 stacked zones
+   ────────────────────────────────────────── */
+
+.aah-card {
+  background: #eef2fb;
+  border-radius: 14px;
+  overflow: hidden;
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Zone 1 — illustration */
+.aah-illo {
+  background: #e8edf7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 36px;
+  min-height: 130px;
+}
+
+/* Zone 2 — copy */
+.aah-copy {
+  background: #eef2fb;
+  padding: 24px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.aah-headline {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+  margin: 0 0 10px 0;
+}
+
+.aah-body {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 420px;
+}
+
+/* Zone 3 — CTA */
+.aah-cta-zone {
+  background: #eef2fb;
+  padding: 20px 40px 28px;
+}
+
+.aah-cta-btn {
+  display: block;
+  width: 100%;
+  background: #1a91f0;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  padding: 14px 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s ease, transform 0.1s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+.aah-cta-btn:hover {
+  background: #1080d8;
+}
+
+.aah-cta-btn:active {
+  background: #0d6fc0;
+  transform: scale(0.99);
+}
+
+.aah-cta-btn:focus-visible {
+  outline: 2px solid #1a91f0;
+  outline-offset: 3px;
+}
+
+/* ──────────────────────────────────────────
+   FeaturesGrid  (.aafg-*)
+   4-col desktop / 2-col tablet+mobile
+   ────────────────────────────────────────── */
+
+.aafg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+/* ──────────────────────────────────────────
+   FeatureCard  (.aaf-*)
+   Top-border separator, no bg card
+   ────────────────────────────────────────── */
+
+.aaf-card {
+  border-top: 1.5px solid #e5e7eb;
+  padding: 28px 24px 28px 0;
+  background: transparent;
+}
+
+/* last card in row has right padding 0 */
+.aafg-grid > div:last-child .aaf-card {
+  padding-right: 0;
+}
+
+.aaf-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aaf-emoji {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.aaf-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.005em;
+}
+
+.aaf-body {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ──────────────────────────────────────────
+   Responsive
+   ────────────────────────────────────────── */
+
+/* Tablet: 640–1023px */
+@media (max-width: 1023px) {
+  .aap-root {
+    padding: 24px 24px 40px;
+  }
+
+  .aap-heading {
+    font-size: 26px;
+  }
+
+  .aafg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+  }
+
+  .aaf-card {
+    padding: 24px 16px 24px 0;
+  }
+
+  /* right column cards get left padding */
+  .aafg-grid > div:nth-child(even) .aaf-card {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+
+  /* 3rd and 4th cards: extra top gap from row 1 */
+  .aafg-grid > div:nth-child(n+3) .aaf-card {
+    border-top: 1.5px solid #e5e7eb;
+  }
+}
+
+/* Mobile: <640px */
+@media (max-width: 639px) {
+  .aap-root {
+    padding: 20px 16px 80px; /* 80px bottom for tab-bar */
+  }
+
+  .aap-heading {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .aap-hero-wrap {
+    margin-bottom: 24px;
+  }
+
+  .aah-card {
+    border-radius: 12px;
+  }
+
+  .aah-illo {
+    padding: 32px 20px 28px;
+    min-height: 110px;
+  }
+
+  .aah-copy {
+    padding: 20px 20px 12px;
+  }
+
+  .aah-headline {
+    font-size: 18px;
+  }
+
+  .aah-body {
+    font-size: 14px;
+  }
+
+  .aah-cta-zone {
+    padding: 14px 20px 22px;
+  }
+
+  .aah-cta-btn {
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+
+  .aafg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .aaf-card {
+    padding: 20px 12px 20px 0;
+  }
+
+  .aafg-grid > div:nth-child(even) .aaf-card {
+    padding-left: 14px;
+    padding-right: 0;
+  }
+
+  .aaf-title {
+    font-size: 14px;
+  }
+
+  .aaf-body {
+    font-size: 12.5px;
+  }
+
+  .aaf-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 10px;
+  }
+}
