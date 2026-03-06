@@ -1,0 +1,1 @@
+export type { TemplateData, CategorySectionData, ExampleItem } from '@/types/page-templates.types';
