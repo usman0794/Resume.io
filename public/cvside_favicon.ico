@@ -1,0 +1,29 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="90" fill="#1E88E5"></rect>
+
+  <!-- Fold corner -->
+  <polygon points="360,0 512,0 512,150" fill="#64B5F6"></polygon>
+
+  <!-- Profile box -->
+  <rect x="70" y="70" width="240" height="190" rx="20" fill="#E3F2FD"></rect>
+
+  <!-- Head -->
+  <circle cx="190" cy="130" r="40" fill="#1E88E5"></circle>
+
+  <!-- Shoulders -->
+  <path d="M120 210 Q190 160 260 210 L260 240 L120 240 Z" fill="#1E88E5"></path>
+
+  <!-- Lines -->
+  <rect x="80" y="300" width="300" height="22" rx="10" fill="#BBDEFB"></rect>
+  <rect x="80" y="350" width="260" height="22" rx="10" fill="#BBDEFB"></rect>
+  <rect x="80" y="400" width="200" height="22" rx="10" fill="#BBDEFB"></rect>
+
+  <!-- Pencil -->
+  <g transform="rotate(-35 380 360)">
+    <rect x="350" y="250" width="60" height="220" rx="20" fill="#0D47A1"></rect>
+    <rect x="350" y="230" width="60" height="40" rx="10" fill="#64B5F6"></rect>
+  </g>
+
+</svg>

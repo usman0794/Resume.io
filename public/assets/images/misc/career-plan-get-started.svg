@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="90" fill="#fef3c7"/>
+  <rect x="60" y="55" width="80" height="100" rx="8" fill="white" stroke="#fbbf24" stroke-width="2"/>
+  <rect x="60" y="55" width="80" height="28" rx="4" fill="#f59e0b"/>
+  <text x="100" y="74" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif" font-weight="700">GET STARTED</text>
+  <rect x="70" y="95" width="60" height="5" rx="2.5" fill="#d1d5db"/>
+  <rect x="70" y="106" width="55" height="5" rx="2.5" fill="#e5e7eb"/>
+  <rect x="70" y="117" width="58" height="5" rx="2.5" fill="#e5e7eb"/>
+  <rect x="70" y="128" width="45" height="5" rx="2.5" fill="#e5e7eb"/>
+  <path d="M80 145 L100 140 L120 145" stroke="#f59e0b" stroke-width="2" fill="none"/>
+  <circle cx="155" cy="45" r="14" fill="#fde68a" opacity="0.7"/>
+  <text x="150" y="50" font-size="16" fill="#f59e0b">?</text>
+</svg>
