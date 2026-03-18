@@ -1,0 +1,81 @@
+/* ─────────────────────────────────────────────
+   career-plans.css
+   Scoped styles for CareerPlansPage and its
+   sub-components. Tailwind handles grid and
+   spacing; these rules add card-level polish.
+───────────────────────────────────────────── */
+
+/* Page padding */
+.cpl-page {
+  padding: 40px 32px 80px;
+  background-color: #ffffff;
+  min-height: calc(100vh - 56px);
+}
+
+@media (max-width: 767px) {
+  .cpl-page {
+    padding: 28px 16px 60px;
+  }
+}
+
+/* Card base */
+.cpl-card {
+  background-color: #f0fdf4;
+  border-radius: 16px;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+.cpl-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cpl-card:active {
+  transform: translateY(1px);
+}
+
+/* Card illustration wrapper */
+.cpl-card__illustration {
+  min-height: 180px;
+}
+
+/* Card img — prevent overflow */
+.cpl-card__img {
+  max-width: 150px;
+  max-height: 130px;
+  object-fit: contain;
+}
+
+/* Badge */
+.cpl-card__badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 4px;
+  background-color: #22c55e;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+/* Arrow button */
+.cpl-card__arrow {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+  border: none;
+}
+
+/* Suggest button */
+.cpl-cta__btn {
+  border-radius: 6px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
