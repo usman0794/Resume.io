@@ -1,0 +1,30 @@
+/* ─────────────────────────────────────────────
+   explore-careers.css
+   Scoped styles for ExploreCareersPage.
+───────────────────────────────────────────── */
+
+.ec-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px 80px;
+  min-height: calc(100vh - 56px);
+  background-color: #ffffff;
+}
+
+/* Card shadows */
+.ec-search-card,
+.ec-search-card-desktop {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Inline desktop search button */
+.ec-search-btn--inline {
+  border-radius: 8px;
+}
+
+/* Mobile search button */
+.ec-search-btn {
+  border-radius: 10px;
+}
