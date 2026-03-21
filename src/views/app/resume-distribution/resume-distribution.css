@@ -1,0 +1,583 @@
+/* ============================================================
+   resume-distribution.css — /app/resume-distribution/edit
+   Namespace: .rdc-*
+   ============================================================ */
+
+/* ──────────────────────────────────────────
+   Page root — two-column flex on desktop
+   ────────────────────────────────────────── */
+
+.rdc-root {
+  display       : flex;
+  flex-direction: row;
+  min-height    : 100%;
+  background    : #ffffff;
+  align-items   : flex-start;
+}
+
+/* ──────────────────────────────────────────
+   Left column — form
+   ────────────────────────────────────────── */
+
+.rdc-left {
+  flex          : 1 1 0;
+  min-width     : 0;
+  padding       : 32px 40px 60px;
+  box-sizing    : border-box;
+  display       : flex;
+  flex-direction: column;
+  gap           : 20px;
+}
+
+/* ──────────────────────────────────────────
+   Right column — recruiters panel
+   ────────────────────────────────────────── */
+
+.rdc-right {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .rdc-right {
+    display        : flex;
+    flex           : 0 0 42%;
+    max-width      : 42%;
+    min-height     : calc(100vh - 60px);
+    padding        : 32px 32px;
+    box-sizing     : border-box;
+    align-items    : flex-start;
+    justify-content: flex-start;
+  }
+}
+
+/* ──────────────────────────────────────────
+   Page heading
+   ────────────────────────────────────────── */
+
+.rdc-page-heading {
+  font-size     : 22px;
+  font-weight   : 700;
+  color         : #111827;
+  line-height   : 1.2;
+  letter-spacing: -0.01em;
+  margin        : 0;
+}
+
+/* ──────────────────────────────────────────
+   Resume Card  (.rdc-card*)
+   ────────────────────────────────────────── */
+
+.rdc-card {
+  display        : flex;
+  align-items    : stretch;
+  justify-content: space-between;
+  border         : 1px solid #e5e7eb;
+  border-radius  : 10px;
+  padding        : 16px 16px 16px 18px;
+  background     : #ffffff;
+  gap            : 16px;
+}
+
+.rdc-card-left {
+  display       : flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap           : 16px;
+  flex          : 1;
+  min-width     : 0;
+}
+
+.rdc-card-info {
+  display       : flex;
+  flex-direction: column;
+  gap           : 4px;
+}
+
+.rdc-card-title {
+  font-size  : 15px;
+  font-weight: 600;
+  color      : #111827;
+  line-height: 1.2;
+}
+
+.rdc-card-updated {
+  font-size  : 12px;
+  color      : #9ca3af;
+  line-height: 1;
+}
+
+.rdc-card-actions {
+  display: flex;
+  gap    : 10px;
+  flex-wrap: wrap;
+}
+
+.rdc-btn-outline {
+  display        : inline-flex;
+  align-items    : center;
+  gap            : 6px;
+  height         : 34px;
+  padding        : 0 14px;
+  border         : 1px solid #d1d5db;
+  border-radius  : 6px;
+  background     : #ffffff;
+  font-size      : 13px;
+  font-weight    : 500;
+  color          : #374151;
+  cursor         : pointer;
+  white-space    : nowrap;
+  font-family    : inherit;
+  transition     : border-color 0.15s, background 0.15s;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rdc-btn-outline:hover {
+  border-color: #9ca3af;
+  background  : #f9fafb;
+}
+
+.rdc-change-short { display: none; }
+.rdc-change-long  { display: inline; }
+
+.rdc-card-thumb {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  flex-shrink    : 0;
+}
+
+/* ──────────────────────────────────────────
+   Countries Notice  (.rdc-notice*)
+   ────────────────────────────────────────── */
+
+.rdc-notice {
+  display      : flex;
+  align-items  : flex-start;
+  gap          : 10px;
+  background   : #eff6ff;
+  border       : 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding      : 14px 16px;
+}
+
+.rdc-notice-icon {
+  flex-shrink: 0;
+  margin-top : 2px;
+  display    : flex;
+}
+
+.rdc-notice-text {
+  font-size  : 13px;
+  color      : #374151;
+  line-height: 1.6;
+  margin     : 0;
+}
+
+.rdc-notice-text strong {
+  font-weight: 600;
+  color      : #111827;
+}
+
+/* ──────────────────────────────────────────
+   Sections  (.rdc-section*)
+   ────────────────────────────────────────── */
+
+.rdc-section {
+  display       : flex;
+  flex-direction: column;
+  gap           : 14px;
+  padding-top   : 4px;
+}
+
+.rdc-section-heading {
+  font-size  : 16px;
+  font-weight: 700;
+  color      : #111827;
+  margin     : 0 0 -4px 0;
+  line-height: 1.2;
+}
+
+.rdc-section-sub {
+  font-size  : 13px;
+  color      : #6b7280;
+  margin     : 0;
+  line-height: 1.5;
+}
+
+/* ──────────────────────────────────────────
+   Fields
+   ────────────────────────────────────────── */
+
+.rdc-row-two {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 14px;
+}
+
+.rdc-field-group {
+  display       : flex;
+  flex-direction: column;
+  gap           : 6px;
+}
+
+.rdc-label {
+  font-size  : 13px;
+  font-weight: 500;
+  color      : #6b7280;
+  line-height: 1;
+}
+
+.rdc-input {
+  width           : 100%;
+  height          : 46px;
+  background      : #f3f4f6;
+  border          : 1.5px solid transparent;
+  border-radius   : 8px;
+  padding         : 0 14px;
+  font-size       : 14px;
+  color           : #111827;
+  outline         : none;
+  box-sizing      : border-box;
+  font-family     : inherit;
+  -webkit-font-smoothing: antialiased;
+  transition      : border-color 0.15s, background 0.15s;
+}
+
+.rdc-input::placeholder {
+  color: #9ca3af;
+}
+
+.rdc-input:focus {
+  border-color: #1a91f0;
+  background  : #ffffff;
+  box-shadow  : 0 0 0 3px rgba(26, 145, 240, 0.1);
+}
+
+.rdc-input:hover:not(:focus) {
+  border-color: #d1d5db;
+}
+
+.rdc-helper-text {
+  font-size  : 12px;
+  color      : #6b7280;
+  line-height: 1.4;
+  margin-top : -2px;
+}
+
+/* ──────────────────────────────────────────
+   Select wrapper
+   ────────────────────────────────────────── */
+
+.rdc-select-wrap {
+  position: relative;
+}
+
+.rdc-select {
+  width          : 100%;
+  height         : 46px;
+  background     : #f3f4f6;
+  border         : 1.5px solid transparent;
+  border-radius  : 8px;
+  padding        : 0 36px 0 14px;
+  font-size      : 14px;
+  color          : #111827;
+  outline        : none;
+  box-sizing     : border-box;
+  appearance     : none;
+  -webkit-appearance: none;
+  font-family    : inherit;
+  cursor         : pointer;
+  -webkit-font-smoothing: antialiased;
+  transition     : border-color 0.15s, background 0.15s;
+}
+
+.rdc-select:focus {
+  border-color: #1a91f0;
+  background  : #ffffff;
+  box-shadow  : 0 0 0 3px rgba(26, 145, 240, 0.1);
+}
+
+.rdc-select-chevron {
+  position      : absolute;
+  right         : 12px;
+  top           : 50%;
+  transform     : translateY(-50%);
+  pointer-events: none;
+  display       : flex;
+  align-items   : center;
+}
+
+.rdc-select-chevron--over-input {
+  z-index: 2;
+}
+
+/* Input with right icon space */
+.rdc-input--icon-right {
+  padding-right: 36px;
+}
+
+/* ──────────────────────────────────────────
+   Remote toggle
+   ────────────────────────────────────────── */
+
+.rdc-toggle-row {
+  display    : flex;
+  align-items: center;
+  gap        : 12px;
+}
+
+.rdc-toggle {
+  position     : relative;
+  width        : 40px;
+  height       : 22px;
+  border-radius: 11px;
+  background   : #d1d5db;
+  border       : none;
+  cursor       : pointer;
+  flex-shrink  : 0;
+  transition   : background 0.2s ease;
+  padding      : 0;
+  outline      : none;
+}
+
+.rdc-toggle--on {
+  background: #1a91f0;
+}
+
+.rdc-toggle-thumb {
+  position     : absolute;
+  top          : 2px;
+  left         : 2px;
+  width        : 18px;
+  height       : 18px;
+  border-radius: 50%;
+  background   : #ffffff;
+  box-shadow   : 0 1px 3px rgba(0,0,0,0.15);
+  transition   : transform 0.2s ease;
+  display      : block;
+}
+
+.rdc-toggle--on .rdc-toggle-thumb {
+  transform: translateX(18px);
+}
+
+.rdc-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(26, 145, 240, 0.25);
+}
+
+.rdc-toggle-label {
+  font-size  : 14px;
+  color      : #374151;
+  line-height: 1;
+}
+
+/* ──────────────────────────────────────────
+   Salary row
+   ────────────────────────────────────────── */
+
+.rdc-salary-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 130px;
+  gap    : 10px;
+  align-items: end;
+}
+
+.rdc-salary-currency {
+  /* uses rdc-select-wrap */
+}
+
+.rdc-select--salary {
+  height : 46px;
+  padding: 0 32px 0 12px;
+}
+
+.rdc-salary-amount {
+  position: relative;
+}
+
+.rdc-salary-dollar {
+  position      : absolute;
+  left          : 12px;
+  top           : 50%;
+  transform     : translateY(-50%);
+  font-size     : 14px;
+  color         : #9ca3af;
+  pointer-events: none;
+  z-index       : 1;
+}
+
+.rdc-input--salary-amount {
+  padding-left: 22px;
+}
+
+/* ──────────────────────────────────────────
+   Recruiters matched box
+   ────────────────────────────────────────── */
+
+.rdc-recruiters-box {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  background     : #f8faff;
+  border         : 1px solid #e5e7eb;
+  border-radius  : 8px;
+  padding        : 14px 16px;
+}
+
+.rdc-recruiters-label {
+  font-size  : 14px;
+  color      : #374151;
+  font-weight: 400;
+}
+
+.rdc-recruiters-count {
+  display    : flex;
+  align-items: center;
+  gap        : 6px;
+}
+
+.rdc-recruiters-number {
+  font-size  : 24px;
+  font-weight: 700;
+  color      : #1a91f0;
+  line-height: 1;
+}
+
+.rdc-recruiters-help {
+  background: none;
+  border    : none;
+  cursor    : pointer;
+  padding   : 2px;
+  display   : flex;
+  align-items: center;
+  color     : #9ca3af;
+}
+
+/* ──────────────────────────────────────────
+   Submit button
+   ────────────────────────────────────────── */
+
+.rdc-submit-btn {
+  width        : 100%;
+  height       : 50px;
+  background   : #1a91f0;
+  color        : #ffffff;
+  font-size    : 16px;
+  font-weight  : 600;
+  border       : none;
+  border-radius: 10px;
+  cursor       : pointer;
+  letter-spacing: 0.01em;
+  font-family  : inherit;
+  -webkit-font-smoothing: antialiased;
+  transition   : background 0.15s, transform 0.1s;
+  margin-top   : 6px;
+}
+
+.rdc-submit-btn:hover  { background: #1080d8; }
+.rdc-submit-btn:active { background: #0d6fc0; transform: scale(0.99); }
+
+.rdc-submit-btn:focus-visible {
+  outline       : 2px solid #1a91f0;
+  outline-offset: 3px;
+}
+
+/* ──────────────────────────────────────────
+   Recruiters panel  (.rdc-panel*)
+   ────────────────────────────────────────── */
+
+.rdc-panel {
+  width: 100%;
+}
+
+.rdc-panel-card {
+  background   : #ffffff;
+  border       : 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding      : 24px 22px 28px;
+  width        : 100%;
+}
+
+.rdc-panel-heading {
+  font-size  : 16px;
+  font-weight: 700;
+  color      : #111827;
+  text-align : center;
+  margin     : 0 0 20px 0;
+  line-height: 1.3;
+}
+
+.rdc-panel-benefits {
+  display              : grid;
+  grid-template-columns: 1fr 1fr;
+  gap                  : 14px 16px;
+}
+
+.rdc-panel-benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.rdc-panel-check {
+  flex-shrink: 0;
+  margin-top : 1px;
+  display    : flex;
+}
+
+.rdc-panel-benefit-text {
+  font-size  : 13px;
+  color      : #374151;
+  line-height: 1.45;
+}
+
+/* ──────────────────────────────────────────
+   Responsive
+   ────────────────────────────────────────── */
+
+/* Tablet 640–1023px */
+@media (max-width: 1023px) {
+  .rdc-left {
+    padding: 24px 24px 80px;
+  }
+
+  .rdc-page-heading {
+    font-size: 20px;
+  }
+}
+
+/* Mobile <640px */
+@media (max-width: 639px) {
+  .rdc-left {
+    padding: 20px 16px 80px;
+    gap    : 16px;
+  }
+
+  .rdc-page-heading {
+    font-size: 20px;
+  }
+
+  /* Stack name fields */
+  .rdc-row-two {
+    grid-template-columns: 1fr;
+  }
+
+  /* Resume card */
+  .rdc-change-long  { display: none; }
+  .rdc-change-short { display: inline; }
+
+  /* Salary row — compress on mobile */
+  .rdc-salary-row {
+    grid-template-columns: 80px 1fr 100px;
+    gap: 6px;
+  }
+
+  .rdc-recruiters-number {
+    font-size: 20px;
+  }
+
+  .rdc-submit-btn {
+    height   : 52px;
+    font-size: 16px;
+  }
+}
