@@ -1,0 +1,120 @@
+@import './styles/app-layout.css';
+@import './styles/client/job-search.css';
+@import './styles/client/job-tracking.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Root CSS Variables — Light Mode ONLY (dark mode removed)
+   ============================================================ */
+:root {
+  /* Brand */
+  --color-primary: #1a91f0;
+  --color-primary-hover: #1580d6;
+  --color-primary-light: #e6f1fe;
+  --color-primary-lighter: #d4e7fe;
+
+  /* Success / Green */
+  --color-success: #21b068;
+  --color-trustpilot: #00b67a;
+
+  /* Text */
+  --color-text-heading: #1e2a3b;
+  --color-text-body: #4b5563;
+  --color-text-muted: #828ba2;
+  --color-text-link: #1a91f0;
+
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f8fafc;
+  --color-bg-hero: #f7f9fc;
+  --color-bg-card: #f0f4fd;
+  --color-bg-card-purple: #f4f1fd;
+  --color-bg-card-teal: #eef6f9;
+  --color-bg-card-blue: #eef7fb;
+  --color-bg-card-green: #eef5ef;
+
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-light: #f1f5f9;
+
+  /* Shadows */
+  --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+
+  /* Typography scale */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Legacy compatibility */
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #ffffff;
+  --border: #e5e4e7;
+}
+
+/* Dark mode completely disabled for marketing pages */
+
+/* ============================================================
+   Base Styles
+   ============================================================ */
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: var(--color-text-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ============================================================
+   Custom Scrollbar Styles (Premium)
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(130, 139, 162, 0.4); /* var(--color-text-muted) with opacity */
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(130, 139, 162, 0.7);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(130, 139, 162, 0.4) transparent;
+}
+
+/* ============================================================
+   Circular Timer Animation (EveryToolSection)
+   ============================================================ */
+@keyframes circular-timer {
+  from {
+    stroke-dashoffset: 62.83;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-circular-timer {
+  animation: circular-timer 5s linear forwards;
+}
