@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="90" fill="#f0fdf4"/>
+  <!-- Magnifying glass -->
+  <circle cx="88" cy="88" r="38" stroke="#16a34a" stroke-width="6" fill="white"/>
+  <line x1="116" y1="116" x2="148" y2="148" stroke="#16a34a" stroke-width="8" stroke-linecap="round"/>
+  <!-- Job title tags inside magnifier -->
+  <rect x="66" y="76" width="45" height="12" rx="6" fill="#86efac"/>
+  <text x="88.5" y="86" text-anchor="middle" font-size="7" fill="#166534" font-family="sans-serif" font-weight="600">Engineer</text>
+  <rect x="66" y="92" width="40" height="12" rx="6" fill="#bbf7d0"/>
+  <text x="86" y="102" text-anchor="middle" font-size="7" fill="#166534" font-family="sans-serif">Designer</text>
+  <!-- Stars -->
+  <text x="30" y="50" font-size="14" fill="#fbbf24" opacity="0.7">★</text>
+  <text x="155" y="70" font-size="10" fill="#fbbf24" opacity="0.6">★</text>
+  <text x="45" y="165" font-size="12" fill="#fbbf24" opacity="0.5">★</text>
+</svg>

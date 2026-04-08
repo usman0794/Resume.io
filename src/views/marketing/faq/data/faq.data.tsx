@@ -1,0 +1,63 @@
+// faq.data.tsx — Static data for FAQ/Help Center
+import type { FaqCategory } from '../types/faq.types';
+
+export const FAQ_CATEGORIES: FaqCategory[] = [
+  {
+    id: 'resumes-cover-letters',
+    title: 'Resumes & Cover Letters',
+    articleCount: 16,
+    articles: [
+      { id: 'r1', categoryId: 'resumes-cover-letters', title: 'How do I cancel, downgrade or delete my account?', updatedAt: 'Edited 7 months ago', description: 'You can cancel a resume.io subscription from our website, even without logging into the app. Visit our contact page and choose...' },
+      { id: 'r2', categoryId: 'resumes-cover-letters', title: 'How do I share my resume and cover letter?', updatedAt: 'Edited 7 months ago', description: 'When your resume is ready, you can use resume.io to share an online link to your resume. By default your materials are private...' },
+      { id: 'r3', categoryId: 'resumes-cover-letters', title: 'How do I upload or edit my photo to my resume?', updatedAt: 'Edited 7 months ago', description: 'Many of resume.io\'s professionally designed templates include the option to add a photo to your resume. Here\'s how to do...' },
+      { id: 'r4', categoryId: 'resumes-cover-letters', title: 'How do I create a resume?', updatedAt: 'Edited 7 months ago', description: 'Here\'s how to create a job-winning resume in 10 easy steps with resume.io. To get started, select a resume template with a d...' },
+      { id: 'r5', categoryId: 'resumes-cover-letters', title: 'How can I customize my resume?', updatedAt: 'Edited 7 months ago', description: 'At resume.io, we believe that every resume should be customized for the employer, job title, and your personal needs and pr...' },
+      { id: 'r6', categoryId: 'resumes-cover-letters', title: 'Can I change the language of my resume or cover letter?', updatedAt: 'Edited 7 months ago', description: 'Yes! You can change the language of your resume or cover letter at any time. We currently support English (US, UK & NZ), Es...' },
+      { id: 'r7', categoryId: 'resumes-cover-letters', title: 'Can I download my resume to Word or PDF?', updatedAt: 'Edited 7 months ago', description: 'Once you\'ve finished crafting your perfect resume or cover letter, there are several ways you can download it to share it with...' },
+      { id: 'r8', categoryId: 'resumes-cover-letters', title: 'How do I create a cover letter?', updatedAt: 'Edited 8 months ago', description: 'Did you know that all of resume.io\'s 30+ resume templates come with matching cover letter styles? A strong cover letter is a...' },
+      { id: 'r9', categoryId: 'resumes-cover-letters', title: 'How do I duplicate or create multiple versions of my resume?', description: 'If you are a resume.io premium user, you can create an unlimited number of resumes and cover letters. As you apply to jobs,...' },
+      { id: 'r10', categoryId: 'resumes-cover-letters', title: 'Do you write resumes or offer feedback?', updatedAt: 'Edited last year', description: 'At resume.io, we\'re all about providing premium tools and resources to help you craft the perfect resume. We also know that...' },
+      { id: 'r11', categoryId: 'resumes-cover-letters', title: 'Why is something missing or not saving in my resume?', updatedAt: 'Edited last year', description: 'Our resume builder is designed to constantly save your changes as you work so that there is no need to remember to click s...' },
+      { id: 'r12', categoryId: 'resumes-cover-letters', title: 'How can I use resume.io for free?', updatedAt: 'Edited last year', description: 'resume.io offers several tools that you can use 100% free of charge, with no need to enter any credit card information. With...' },
+      { id: 'r13', categoryId: 'resumes-cover-letters', title: 'Are resumes built with resume.io ATS-friendly', updatedAt: 'Edited last year', description: 'At resume.io, we know that Applicant Tracking Systems, called ATS, are one of the biggest hurdles job seekers face when it c...' },
+      { id: 'r14', categoryId: 'resumes-cover-letters', title: 'How do I change my resume template or design?', updatedAt: 'Edited last year', description: 'At resume.io, we offer 30+ professionally designed resume templates ranging from fresh and modern to clean and classic an...' },
+      { id: 'r15', categoryId: 'resumes-cover-letters', title: 'Will my resume or cover letter be public?', updatedAt: 'Edited last year', description: 'When you create a resume or cover letter on resume.io it is only accessible by you and the people you share it with. Your res...' },
+      { id: 'r16', categoryId: 'resumes-cover-letters', title: 'How do I preview my resume and cover letter?', updatedAt: 'Edited 2 years ago', description: 'It\'s important to make sure your resume is exactly how you\'d like it before you download it and submit it to employers. You...' },
+    ],
+  },
+  {
+    id: 'billing-accounts',
+    title: 'Billing & Accounts',
+    articleCount: 7,
+    articles: [
+      { id: 'b1', categoryId: 'billing-accounts', title: 'Payments, refunds, cancellations', updatedAt: 'Edited 6 months ago', description: 'If you were charged after attempting to cancel yo...' },
+      { id: 'b2', categoryId: 'billing-accounts', title: 'What can I do with a premium subscription?', description: 'A premium subscription is the only way to enjoy al...' },
+      { id: 'b3', categoryId: 'billing-accounts', title: 'resume.io getting started guide', updatedAt: 'Edited 7 months ago', description: 'Welcome to resume.io. We\'ve created this guide t...' },
+      { id: 'b4', categoryId: 'billing-accounts', title: 'How do I log in to resume.io?', updatedAt: 'Edited 7 months ago', description: 'In order to access resume.io\'s suite of professional...' },
+      { id: 'b5', categoryId: 'billing-accounts', title: 'How does billing work?', updatedAt: 'Edited 7 months ago', description: 'resume.io offers various plans to accommodate a...' },
+      { id: 'b6', categoryId: 'billing-accounts', title: 'Is my data safe on resume.io?', updatedAt: 'Edited last year', description: 'At resume.io, we take data safety as seriously as o...' },
+      { id: 'b7', categoryId: 'billing-accounts', title: 'Is resume.io legit?', updatedAt: 'Edited last year', description: 'Since its inception in 2013, resume.io has helped o...' },
+    ],
+  },
+  {
+    id: 'job-search',
+    title: 'Job Search',
+    articleCount: 14,
+    articles: [
+      { id: 'j1', categoryId: 'job-search', title: 'Auto Apply and Resume Distribution', updatedAt: 'Edited 6 months ago', description: 'If you need more Auto-Apply credits, you can pur...' },
+      { id: 'j2', categoryId: 'job-search', title: 'General Questions', updatedAt: 'Edited 6 months ago', description: 'If you no longer wish to receive marketing emails,...' },
+      { id: 'j3', categoryId: 'job-search', title: 'How do I search and apply to jobs on resume.io?', description: 'There are dozens of online job boards offering tho...' },
+      { id: 'j4', categoryId: 'job-search', title: 'How do I track my job applications or job search?', description: 'When the average job search lasts about six mont...' },
+      { id: 'j5', categoryId: 'job-search', title: 'What does resume.io\'s Interview Prep feature offer? What can I expect?', description: 'resume.io\'s Interview Prep features a library of ou...' },
+      { id: 'j6', categoryId: 'job-search', title: 'How does the Recruiter Outreach (Resume Distribution) work?', description: 'Our Recruiter Outreach (Resume Distribution) tool...' },
+      { id: 'j7', categoryId: 'job-search', title: 'Do I get to speak with an actual person for my interview prep?', description: 'resume.io offers two powerful ways to prepare for...' },
+      { id: 'j8', categoryId: 'job-search', title: 'Can resume.io help find the best career for me?', description: 'resume.io\'s suite of powerful tools and expert res...' },
+      { id: 'j9', categoryId: 'job-search', title: 'How does the Salary Analyzer on resume.io work?', description: 'resume.io\'s Salary Analyzer is designed to help yo...' },
+      { id: 'j10', categoryId: 'job-search', title: 'How will the total job search solution help me find a new job?', description: 'With Total Job Search Solution, we simplify your jo...' },
+      { id: 'j11', categoryId: 'job-search', title: 'What is the difference between Recruiter Outreach and Auto Apply?', description: 'resume.io\'s Auto Apply feature is part of our Total...' },
+      { id: 'j12', categoryId: 'job-search', title: 'What does Career Assessment look like? What can I expect?', description: 'resume.io\'s powerful Career Assessment starts wit...' },
+      { id: 'j13', categoryId: 'job-search', title: 'What is a Career Assessment?', updatedAt: 'Edited 2 years ago', description: 'resume.io\'s Career Assessment is a free tool desig...' },
+      { id: 'j14', categoryId: 'job-search', title: 'What is Interview Prep?', updatedAt: 'Edited 2 years ago', description: 'resume.io\'s Interview Prep is an AI-powered tool t...' },
+    ],
+  },
+];

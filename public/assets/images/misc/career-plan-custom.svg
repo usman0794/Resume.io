@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <circle cx="100" cy="100" r="90" fill="#fff7ed"/>
+  <!-- Pencil icon -->
+  <rect x="70" y="55" width="65" height="90" rx="6" fill="white" stroke="#f97316" stroke-width="2"/>
+  <rect x="70" y="55" width="65" height="25" rx="4" fill="#f97316"/>
+  <text x="102" y="72" text-anchor="middle" font-size="9" fill="white" font-family="sans-serif" font-weight="700">CUSTOM</text>
+  <!-- Pencil icon on card -->
+  <line x1="80" y1="95" x2="125" y2="95" stroke="#fed7aa" stroke-width="2"/>
+  <line x1="80" y1="105" x2="120" y2="105" stroke="#fed7aa" stroke-width="2"/>
+  <line x1="80" y1="115" x2="122" y2="115" stroke="#fed7aa" stroke-width="2"/>
+  <!-- Edit pencil -->
+  <rect x="110" y="125" width="20" height="8" rx="2" fill="#f97316" transform="rotate(-45 120 129)"/>
+  <polygon points="105,144 112,135 118,141" fill="#f97316"/>
+  <circle cx="42" cy="55" r="12" fill="#fdba74" opacity="0.5"/>
+  <circle cx="162" cy="160" r="10" fill="#86efac" opacity="0.5"/>
+</svg>

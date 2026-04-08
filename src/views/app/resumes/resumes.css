@@ -1,0 +1,195 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   resumes.css
+   Scoped styles for ResumesPage and its sub-components.
+   Components: ResumesPage, DocumentsPageHeader, DocumentsTabs,
+               ResumeDistributionBanner, ResumeGrid, ResumeCard,
+               NewResumeCard, AiCoachBar
+
+   Tailwind handles the main flex/grid/spacing system.
+   These rules add pixel-level polish, interaction states, and
+   details that would be verbose in Tailwind utilities.
+──────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Page wrapper ────────────────────────────────────────────────────────────── */
+.rp-page {
+  padding: 36px 32px 80px;
+  background-color: #ffffff;
+  min-height: calc(100vh - 60px); /* subtract topbar height */
+  max-width: 960px;
+}
+
+@media (max-width: 1023px) {
+  .rp-page {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .rp-page {
+    padding: 24px 16px 80px;
+  }
+}
+
+/* ── Mobile New Resume button wrapper ──────────────────────────────────────── */
+.rp-mobile-new-wrap {
+  /* Only shown on mobile via .md:hidden Tailwind utility */
+}
+
+/* ── Mobile New Resume full-width blue button ──────────────────────────────── */
+.rp-mobile-new-btn {
+  display: block;
+  width: 100%;
+  background-color: #1e8cff;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 14px 24px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s ease;
+  font-family: inherit;
+}
+
+.rp-mobile-new-btn:hover  { background-color: #0d7de8; }
+.rp-mobile-new-btn:active { background-color: #0b6fd4; }
+
+/* ── Page heading ────────────────────────────────────────────────────────────── */
+.cl-header__title {
+  letter-spacing: -0.3px;
+}
+
+/* ── Tab bar ─────────────────────────────────────────────────────────────────── */
+.cl-tab {
+  background: transparent;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  cursor: pointer;
+  padding-left: 0;
+  padding-right: 0;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+}
+
+.cl-tab:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ── Resume Card ─────────────────────────────────────────────────────────────── */
+
+/* Thumbnail rounded corners (Tailwind rounded-lg = 8px, we confirm 10px) */
+.rc-thumbnail {
+  border-radius: 10px;
+}
+
+.rc-thumbnail__placeholder {
+  border-radius: inherit;
+}
+
+/* Score badge */
+.rc-score__badge {
+  background-color: #f97316;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Action buttons */
+.rc-action {
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+  transition: color 0.12s ease;
+}
+
+/* Title input when editing */
+.rc-title-input {
+  font-family: inherit;
+  letter-spacing: -0.2px;
+}
+
+/* Edit (pencil) button */
+.rc-edit-btn {
+  padding: 2px;
+  border-radius: 4px;
+  transition: background-color 0.12s, color 0.12s;
+}
+
+.rc-edit-btn:hover {
+  background-color: #f3f4f6;
+}
+
+/* ── New Resume Card ──────────────────────────────────────────────────────────── */
+.nrc-placeholder {
+  /* Dashed border style applied via Tailwind border-dashed; confirm color */
+  border-color: #e5e7eb;
+  transition: border-color 0.15s ease;
+}
+
+.nrc-card:hover .nrc-placeholder {
+  border-color: #93c5fd; /* blue-300 */
+}
+
+/* ── Resume Grid ─────────────────────────────────────────────────────────────── */
+
+/* Mobile-only divider between stacked cards */
+.rg-divider {
+  border-top-color: #f3f4f6;
+}
+
+/* ── Promo Banner ────────────────────────────────────────────────────────────── */
+.cl-promo-banner {
+  background-color: #f9fafb;
+}
+
+.cl-promo-banner__btn {
+  font-family: inherit;
+  letter-spacing: 0.01em;
+}
+
+/* ── AI Coach Bar ────────────────────────────────────────────────────────────── */
+.cl-ai-bar {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+}
+
+.cl-ai-bar__input {
+  font-family: inherit;
+  caret-color: #9ca3af;
+}
+
+/* Spinning rainbow ring animation */
+.cl-ai-ring {
+  animation: ai-ring-spin 2s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes ai-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Focus-visible accessibility polish ──────────────────────────────────────── */
+button:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+.nrc-card:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 8px;
+}

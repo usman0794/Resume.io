@@ -1,0 +1,733 @@
+/*
+ * File: src/styles/client/job-search.css
+ *
+ * Purpose:
+ *   All styles for the authenticated Job Search feature:
+ *   JobSearchPage, JobSearchBar, JobSearchTabs, CreateJobAlert,
+ *   EmptyJobState, JobCard, JobListSkeleton, JobDetailPanel.
+ *
+ * Design tokens inherited from app-layout.css:
+ *   --al-brand  : #1A91F0  (primary blue)
+ *   --al-border : #e5e7eb
+ *   --al-bg     : #fafbfc
+ *   --al-surface: #ffffff
+ *
+ * Breakpoints:
+ *   Mobile  : <640px
+ *   Tablet  : 640–1023px
+ *   Desktop : ≥1024px
+ */
+
+/* ════════════════════════════════════════════════════════════════════════════
+   PAGE ROOT
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jsp-root {
+  display       : flex;
+  flex-direction: column;
+  min-height    : 100%;
+  background    : var(--al-bg, #fafbfc);
+  font-family   : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Search bar wrapper */
+.jsp-search-wrap {
+  padding: 20px 20px 0;
+}
+
+/* Content container (list + optional detail panel) */
+.jsp-content {
+  display       : flex;
+  flex-direction: column;
+  flex          : 1;
+  position      : relative;
+}
+
+@media (min-width: 1280px) {
+  .jsp-content {
+    flex-direction: row;
+    align-items   : flex-start;
+  }
+}
+
+/* Main list column */
+.jsp-main {
+  flex          : 1;
+  min-width     : 0;
+  display       : flex;
+  flex-direction: column;
+}
+
+.jsp-tabs-wrap {
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.jsp-alert-wrap {
+  padding: 4px 20px 0;
+}
+
+/* Job list */
+.jsp-list {
+  display       : flex;
+  flex-direction: column;
+  gap           : 0;
+  padding       : 8px 20px 32px;
+}
+
+/* No results */
+.jsp-no-results {
+  padding     : 48px 20px;
+  text-align  : center;
+  color       : #6b7280;
+  font-size   : 14px;
+}
+
+/* Error block */
+.jsp-error {
+  padding   : 32px 20px;
+  text-align: center;
+  color     : #ef4444;
+  font-size : 14px;
+}
+.jsp-retry-btn {
+  margin-top   : 12px;
+  padding      : 8px 20px;
+  background   : var(--al-brand, #1A91F0);
+  color        : #fff;
+  border       : none;
+  border-radius: 8px;
+  font-size    : 14px;
+  font-weight  : 600;
+  cursor       : pointer;
+  font-family  : inherit;
+}
+.jsp-retry-btn:hover { background: #1580d6; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SEARCH BAR  (jsb-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jsb-card {
+  background   : #fff;
+  border       : 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding      : 4px;
+  display      : flex;
+  flex-direction: column;
+  gap          : 0;
+  box-shadow   : 0 1px 4px rgba(0,0,0,0.04);
+}
+
+@media (min-width: 768px) {
+  .jsb-card {
+    flex-direction: row;
+    align-items   : center;
+    padding       : 6px;
+    gap           : 0;
+  }
+}
+
+.jsb-field {
+  display    : flex;
+  align-items: center;
+  gap        : 10px;
+  padding    : 12px 14px;
+  flex       : 1;
+  min-width  : 0;
+}
+
+.jsb-input {
+  border      : none;
+  outline     : none;
+  background  : transparent;
+  font-size   : 15px;
+  color       : #374151;
+  width       : 100%;
+  font-family : inherit;
+  line-height : 1.4;
+}
+.jsb-input::placeholder { color: #9ca3af; }
+
+/* Vertical divider between fields on desktop */
+.jsb-divider {
+  width     : 1px;
+  height    : 28px;
+  background: #e5e7eb;
+  flex-shrink: 0;
+  display   : none;
+}
+@media (min-width: 768px) {
+  .jsb-divider { display: block; }
+}
+
+/* Horizontal divider on mobile */
+@media (max-width: 767px) {
+  .jsb-field:first-child {
+    border-bottom: 1px solid #f3f4f6;
+  }
+}
+
+.jsb-btn {
+  background   : var(--al-brand, #1A91F0);
+  color        : #fff;
+  font-size    : 15px;
+  font-weight  : 600;
+  padding      : 12px 28px;
+  border       : none;
+  border-radius: 8px;
+  cursor       : pointer;
+  white-space  : nowrap;
+  font-family  : inherit;
+  transition   : background 0.15s;
+  margin       : 4px;
+  flex-shrink  : 0;
+}
+.jsb-btn:hover  { background: #1580d6; }
+.jsb-btn:active { background: #1270c0; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   TABS BAR  (jst-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jst-bar {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  border-bottom  : 1px solid #e5e7eb;
+}
+
+.jst-tabs {
+  display: flex;
+  gap    : 0;
+}
+
+.jst-tab {
+  padding      : 12px 4px;
+  margin-right : 28px;
+  font-size    : 14px;
+  font-weight  : 500;
+  color        : #6b7280;
+  border       : none;
+  background   : transparent;
+  cursor       : pointer;
+  font-family  : inherit;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition   : color 0.15s, border-color 0.15s;
+  white-space  : nowrap;
+}
+.jst-tab:hover { color: #374151; }
+.jst-tab-active {
+  color        : #111827;
+  font-weight  : 600;
+  border-bottom: 2px solid var(--al-brand, #1A91F0);
+}
+
+.jst-tab-count {
+  color    : #9ca3af;
+  font-size: 13px;
+}
+
+.jst-actions {
+  display    : flex;
+  align-items: center;
+  gap        : 4px;
+}
+
+.jst-icon-btn {
+  width          : 34px;
+  height         : 34px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  background     : transparent;
+  border         : none;
+  border-radius  : 8px;
+  cursor         : pointer;
+  transition     : background 0.15s;
+}
+.jst-icon-btn:hover { background: #f3f4f6; }
+
+.jst-saved-btn {
+  display      : flex;
+  align-items  : center;
+  gap          : 5px;
+  padding      : 6px 10px;
+  background   : transparent;
+  border       : none;
+  border-radius: 8px;
+  cursor       : pointer;
+  font-size    : 13px;
+  font-weight  : 500;
+  color        : #6b7280;
+  font-family  : inherit;
+  transition   : background 0.15s;
+}
+.jst-saved-btn:hover { background: #f3f4f6; }
+
+.jst-saved-label {
+  font-size  : 13px;
+  font-weight: 500;
+  color      : #6b7280;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   CREATE JOB ALERT  (cja-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.cja-btn {
+  display    : flex;
+  align-items: center;
+  gap        : 6px;
+  background : transparent;
+  border     : none;
+  cursor     : pointer;
+  padding    : 10px 0;
+  font-family: inherit;
+}
+
+.cja-label {
+  font-size  : 14px;
+  font-weight: 500;
+  color      : var(--al-brand, #1A91F0);
+  text-decoration: none;
+}
+.cja-btn:hover .cja-label { text-decoration: underline; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   EMPTY JOB STATE  (ejs-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.ejs-wrap {
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
+  justify-content: center;
+  padding        : 60px 32px 80px;
+  text-align     : center;
+  flex           : 1;
+}
+
+.ejs-illo {
+  margin-bottom: 24px;
+  opacity      : 0.95;
+}
+
+.ejs-heading {
+  font-size  : 20px;
+  font-weight: 700;
+  color      : #111827;
+  margin     : 0 0 10px;
+  line-height: 1.3;
+}
+
+.ejs-body {
+  font-size  : 14px;
+  color      : #6b7280;
+  margin     : 0 0 28px;
+  max-width  : 280px;
+  line-height: 1.5;
+}
+
+.ejs-btn {
+  background   : var(--al-brand, #1A91F0);
+  color        : #fff;
+  font-size    : 15px;
+  font-weight  : 600;
+  padding      : 12px 36px;
+  border       : none;
+  border-radius: 8px;
+  cursor       : pointer;
+  font-family  : inherit;
+  transition   : background 0.15s;
+}
+.ejs-btn:hover  { background: #1580d6; }
+.ejs-btn:active { background: #1270c0; }
+
+/* ════════════════════════════════════════════════════════════════════════════
+   JOB CARD  (jc-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jc-card {
+  display      : flex;
+  gap          : 14px;
+  padding      : 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+  cursor       : pointer;
+  transition   : background 0.12s;
+  border-radius: 0;
+}
+.jc-card:hover { background: #f9fafb; }
+.jc-card:focus-visible { outline: 2px solid var(--al-brand); outline-offset: 2px; }
+
+/* Company logo / initials */
+.jc-logo {
+  width        : 44px;
+  height       : 44px;
+  border-radius: 10px;
+  display      : flex;
+  align-items  : center;
+  justify-content: center;
+  flex-shrink  : 0;
+  border       : 1px solid rgba(0,0,0,0.06);
+}
+.jc-logo-initials {
+  font-size  : 14px;
+  font-weight: 700;
+  color      : #374151;
+  letter-spacing: -0.5px;
+}
+
+/* Body */
+.jc-body {
+  flex   : 1;
+  min-width: 0;
+}
+
+/* Title row */
+.jc-title-row {
+  display        : flex;
+  align-items    : flex-start;
+  justify-content: space-between;
+  gap            : 8px;
+}
+.jc-title {
+  font-size  : 15px;
+  font-weight: 600;
+  color      : #111827;
+  margin     : 0;
+  line-height: 1.3;
+  flex       : 1;
+  min-width  : 0;
+}
+
+/* Heart button */
+.jc-heart {
+  background  : transparent;
+  border      : none;
+  cursor      : pointer;
+  padding     : 2px;
+  flex-shrink : 0;
+  line-height : 1;
+  transition  : transform 0.15s;
+}
+.jc-heart:hover  { transform: scale(1.15); }
+.jc-heart-saved  {}
+
+/* Company */
+.jc-company {
+  font-size : 13px;
+  color     : #6b7280;
+  margin    : 3px 0 6px;
+}
+
+/* Meta chips row */
+.jc-meta {
+  display    : flex;
+  align-items: center;
+  flex-wrap  : wrap;
+  gap        : 6px;
+  margin-bottom: 6px;
+}
+.jc-meta-item {
+  display    : flex;
+  align-items: center;
+  gap        : 3px;
+  font-size  : 12px;
+  color      : #9ca3af;
+}
+.jc-badge {
+  font-size    : 11px;
+  font-weight  : 600;
+  color        : #374151;
+  background   : #f3f4f6;
+  padding      : 2px 8px;
+  border-radius: 20px;
+  border       : 1px solid #e5e7eb;
+  white-space  : nowrap;
+}
+.jc-salary {
+  font-size  : 12px;
+  font-weight: 500;
+  color      : #059669;
+}
+
+/* Footer row */
+.jc-footer {
+  display        : flex;
+  align-items    : center;
+  justify-content: space-between;
+  gap            : 8px;
+}
+.jc-date {
+  display    : flex;
+  align-items: center;
+  gap        : 4px;
+  font-size  : 12px;
+  color      : #9ca3af;
+}
+
+/* Easy apply button */
+.jc-apply-btn {
+  display      : flex;
+  align-items  : center;
+  gap          : 4px;
+  font-size    : 12px;
+  font-weight  : 600;
+  color        : var(--al-brand, #1A91F0);
+  background   : #eff6ff;
+  border       : 1px solid #bfdbfe;
+  border-radius: 6px;
+  padding      : 4px 10px;
+  cursor       : pointer;
+  font-family  : inherit;
+  transition   : background 0.12s;
+}
+.jc-apply-btn:hover { background: #dbeafe; }
+
+/* Excerpt */
+.jc-excerpt {
+  font-size   : 13px;
+  color       : #6b7280;
+  margin      : 6px 0 0;
+  line-height : 1.5;
+  overflow    : hidden;
+  display     : -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   SKELETON  (jsk-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+.jsk-list {
+  padding: 8px 20px 0;
+}
+
+.jsk-card {
+  display      : flex;
+  gap          : 14px;
+  padding      : 16px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.jsk-logo {
+  width        : 44px;
+  height       : 44px;
+  border-radius: 10px;
+  flex-shrink  : 0;
+}
+
+.jsk-body {
+  flex         : 1;
+  display      : flex;
+  flex-direction: column;
+  gap          : 8px;
+  padding-top  : 2px;
+}
+
+.jsk-line {
+  height       : 12px;
+  border-radius: 6px;
+  background   : #f3f4f6;
+}
+.jsk-line-title   { width: 60%; height: 15px; }
+.jsk-line-company { width: 35%; }
+.jsk-line-meta    { width: 50%; }
+
+@keyframes jsk-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+.jsk-pulse {
+  background     : linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 800px 100%;
+  animation      : jsk-shimmer 1.4s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   DETAIL PANEL  (jdp-)
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* Backdrop (mobile only) */
+.jdp-backdrop {
+  display : none;
+}
+@media (max-width: 1279px) {
+  .jdp-backdrop {
+    display        : block;
+    position       : fixed;
+    inset          : 0;
+    background     : rgba(0,0,0,0.2);
+    z-index        : 40;
+    backdrop-filter: blur(1px);
+    animation      : jdp-fade-in 0.2s ease;
+  }
+}
+
+@keyframes jdp-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Panel */
+.jdp-panel {
+  background   : #fff;
+  overflow     : hidden;
+  display      : flex;
+  flex-direction: column;
+}
+
+/* Mobile: bottom sheet */
+@media (max-width: 1279px) {
+  .jdp-panel {
+    position     : fixed;
+    bottom       : 0;
+    left         : 0;
+    right        : 0;
+    max-height   : 85vh;
+    border-radius: 20px 20px 0 0;
+    z-index      : 50;
+    animation    : jdp-slide-up 0.24s ease-out;
+    box-shadow   : 0 -4px 32px rgba(0,0,0,0.12);
+  }
+  @keyframes jdp-slide-up {
+    from { transform: translateY(100%); }
+    to   { transform: translateY(0); }
+  }
+}
+
+/* Desktop: right side panel */
+@media (min-width: 1280px) {
+  .jdp-panel {
+    width        : 420px;
+    flex-shrink  : 0;
+    position     : sticky;
+    top          : 0;
+    max-height   : calc(100vh - 80px);
+    border-left  : 1px solid #e5e7eb;
+    animation    : jdp-slide-in 0.2s ease-out;
+  }
+  @keyframes jdp-slide-in {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+}
+
+/* Header */
+.jdp-header {
+  display        : flex;
+  justify-content: flex-end;
+  padding        : 14px 16px 0;
+  flex-shrink    : 0;
+}
+
+.jdp-close {
+  width          : 32px;
+  height         : 32px;
+  background     : #f3f4f6;
+  border         : none;
+  border-radius  : 8px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  cursor         : pointer;
+  transition     : background 0.12s;
+}
+.jdp-close:hover { background: #e5e7eb; }
+
+/* Scroll area */
+.jdp-scroll {
+  overflow-y: auto;
+  flex      : 1;
+  padding   : 16px 20px 32px;
+}
+
+/* Title block */
+.jdp-title-block {
+  margin-bottom: 16px;
+}
+.jdp-title {
+  font-size  : 20px;
+  font-weight: 700;
+  color      : #111827;
+  margin     : 0 0 6px;
+  line-height: 1.3;
+}
+.jdp-company {
+  font-size : 14px;
+  color     : #6b7280;
+  margin    : 0;
+}
+
+/* Meta rows */
+.jdp-meta {
+  display       : flex;
+  flex-direction: column;
+  gap           : 8px;
+  padding       : 16px 0;
+  border-top    : 1px solid #f3f4f6;
+  border-bottom : 1px solid #f3f4f6;
+  margin-bottom : 20px;
+}
+.jdp-meta-row {
+  display    : flex;
+  align-items: center;
+  gap        : 8px;
+  font-size  : 13px;
+  color      : #374151;
+}
+
+/* Actions */
+.jdp-actions {
+  display    : flex;
+  gap        : 10px;
+  margin-bottom: 24px;
+}
+.jdp-apply-btn {
+  flex         : 1;
+  background   : var(--al-brand, #1A91F0);
+  color        : #fff;
+  font-size    : 15px;
+  font-weight  : 600;
+  padding      : 12px 20px;
+  border       : none;
+  border-radius: 8px;
+  cursor       : pointer;
+  font-family  : inherit;
+  transition   : background 0.15s;
+}
+.jdp-apply-btn:hover { background: #1580d6; }
+
+.jdp-save-btn {
+  width          : 46px;
+  height         : 46px;
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  background     : #f3f4f6;
+  border         : 1px solid #e5e7eb;
+  border-radius  : 8px;
+  cursor         : pointer;
+  transition     : background 0.12s, border-color 0.12s;
+}
+.jdp-save-btn:hover      { background: #e5e7eb; }
+.jdp-save-btn-active     { background: #fef2f2; border-color: #fecaca; }
+
+/* Description */
+.jdp-section-title {
+  font-size    : 15px;
+  font-weight  : 700;
+  color        : #111827;
+  margin       : 0 0 12px;
+}
+.jdp-desc-body {
+  font-size  : 14px;
+  color      : #374151;
+  line-height: 1.6;
+}
+.jdp-desc-body p  { margin: 0 0 10px; }
+.jdp-desc-body ul { padding-left: 18px; margin: 0 0 10px; }
+.jdp-desc-body li { margin-bottom: 4px; }

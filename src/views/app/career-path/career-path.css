@@ -1,0 +1,66 @@
+/* ─────────────────────────────────────────────
+   career-path.css
+   Scoped styles for CareerPathPage and its
+   sub-components. Tailwind handles most layout;
+   these rules handle pixel-level refinements
+   that Tailwind utilities don't cover cleanly.
+───────────────────────────────────────────── */
+
+/* Page wrapper: vertically + horizontally centred content area */
+.cp-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px 80px;
+  min-height: calc(100vh - 56px); /* subtract top bar height */
+  background-color: #ffffff;
+}
+
+/* Illustration sizing */
+.cp-illustration__img {
+  width: 300px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .cp-illustration__img {
+    width: 340px;
+  }
+}
+
+/* Search card shadow refinement */
+.cp-search-card,
+.cp-search-card-desktop {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Input font */
+.cp-search-input {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Search button */
+.cp-search-btn {
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  background-color: #1e8cff;
+  color: #fff;
+  padding: 14px 24px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.15s ease;
+}
+
+.cp-search-btn:hover {
+  background-color: #0d7de8;
+}
+
+.cp-search-btn:active {
+  background-color: #0b6fd4;
+}

@@ -1,0 +1,6 @@
+/* ─── Blog Page Styles ───────────────────────────────────────────────────────── */
+/* All Blog page component styles are handled via Tailwind utility classes. */
+
+/* ─── BlogHero scrollbar hide ───────────────────────────────────────────────── */
+.blog-hero-scroll::-webkit-scrollbar { display: none; }
+.blog-hero-scroll { scrollbar-width: none; -ms-overflow-style: none; }

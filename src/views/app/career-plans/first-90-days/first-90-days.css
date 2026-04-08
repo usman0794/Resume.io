@@ -1,0 +1,212 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   first-90-days.css
+   Scoped styles for First90DaysPage and its sub-components.
+   Components: First90DaysPage, First90DaysPageHeader,
+               CareerPlanVideoCard, CoachingSidebarCard
+
+   Tailwind handles base flex/grid/spacing.
+   These rules provide pixel-level polish, layout geometry,
+   and interaction states that match the resume.io reference exactly.
+──────────────────────────────────────────────────────────────────────────────── */
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+.f90-page {
+  padding: 36px 32px 80px;
+  background-color: #ffffff;
+  min-height: calc(100vh - 60px);
+  max-width: 960px;
+  /* matches overall app content max-width */
+}
+
+@media (max-width: 1023px) {
+  .f90-page {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .f90-page {
+    padding: 24px 16px 80px;
+  }
+}
+
+/* ── Two-column content layout ────────────────────────────────────────────── */
+.f90-layout {
+  display: flex;
+  flex-direction: column;
+  /* mobile/tablet: stack */
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .f90-layout {
+    flex-direction: row;
+    /* desktop: side-by-side */
+    align-items: flex-start;
+    gap: 24px;
+  }
+}
+
+/* ── Main column (video card) ─────────────────────────────────────────────── */
+.f90-layout__main {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .f90-layout__main {
+    flex: 1;
+    /* grows to fill remaining space */
+    max-width: 640px;
+  }
+}
+
+/* ── Sidebar column (coaching card) ──────────────────────────────────────── */
+.f90-layout__sidebar {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .f90-layout__sidebar {
+    width: 220px;
+    /* fixed right sidebar width, matches reference */
+    flex-shrink: 0;
+  }
+}
+
+/* ── Page header typography ───────────────────────────────────────────────── */
+.f90-header__title {
+  letter-spacing: -0.3px;
+}
+
+/* ── Video card ───────────────────────────────────────────────────────────── */
+.f90-video-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Video area: fixed 16:9 with max-height */
+.f90-video-card__video {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.f90-video-card__video:hover .f90-video-card__play {
+  background-color: #cc0000;
+  transform: scale(1.06);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.f90-video-card__play {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+/* Pill control buttons in video footer */
+.f90-video-card__ctrl-pill {
+  transition: background-color 0.15s ease;
+}
+
+.f90-video-card__ctrl-pill:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* Bullet list */
+.f90-video-card__list {
+  padding-left: 1.25rem;
+  margin: 0 0 1rem 0;
+}
+
+.f90-video-card__list li {
+  margin-bottom: 3px;
+}
+
+/* Inline "book a session" link */
+.f90-video-card__link {
+  color: #1A91F0;
+  text-decoration: none;
+  transition: text-decoration 0.1s;
+}
+
+.f90-video-card__link:hover {
+  text-decoration: underline;
+}
+
+/* ── Coaching sidebar card ────────────────────────────────────────────────── */
+.f90-coaching-card {
+  border-radius: 12px;
+}
+
+/* Book a Coach button */
+.f90-coaching__btn {
+  letter-spacing: 0.01em;
+  font-family: inherit;
+}
+
+/* ── Coaching mobile accordion ────────────────────────────────────────────── */
+.f90-coaching-mobile {
+  border-radius: 12px;
+}
+
+.f90-coaching-mobile__toggle {
+  font-family: inherit;
+}
+
+.f90-coaching-mobile__toggle:hover {
+  background-color: #f9fafb;
+}
+
+/* Avatar overlapping circles */
+.f90-coaching__avatar {
+  position: relative;
+  transition: transform 0.12s ease;
+}
+
+.f90-coaching__avatars:hover .f90-coaching__avatar {
+  transform: translateX(2px);
+}
+
+/* ── Focus-visible ring ───────────────────────────────────────────────────── */
+.f90-video-card__close:focus-visible,
+.f90-coaching-mobile__toggle:focus-visible,
+.f90-coaching__btn:focus-visible,
+.f90-video-card__video:focus-visible {
+  outline: 2px solid #1A91F0;
+  outline-offset: 2px;
+}
+
+/* Chevron rotation for mobile accordion */
+.f90-coaching-chevron {
+  transition: transform 0.2s ease;
+}
+
+.f90-coaching-chevron--open {
+  transform: rotate(180deg);
+}
+
+.f90-coaching-chevron--closed {
+  transform: rotate(0deg);
+}
+
+/* Video card aspect ratio + max height */
+.f90-video-card__ratio {
+  aspect-ratio: 16/9;
+  max-height: 240px;
+}
+
+/* Green blob gradient overlay — left side */
+.f90-video-card__blob {
+  background: radial-gradient(ellipse at 10% 60%, #a7f3c0 0%, #6ee7a4 40%, transparent 70%);
+  opacity: 0.85;
+}
+
+/* Portrait image — right side */
+.f90-video-card__portrait {
+  background: url(https://resume.io/assets/media/first-90-daysc997b98ebeeb39d8.svg) right center / contain no-repeat;
+  opacity: 0.9;
+}
+
+/* Video title font size */
+.f90-video-card__title {
+  font-size: 22px;
+}

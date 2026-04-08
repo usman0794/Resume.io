@@ -1,0 +1,896 @@
+/*
+ * File: src/styles/app-layout.css
+ *
+ * Source of truth: resume.io sidebar design spec v8
+ * All values match the provided specification document exactly.
+ */
+
+/* ── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --al-sidebar-w: 260px;
+  --al-bottom-h: 68px;
+  --al-topbar-h: 60px;
+  --al-mobile-h: 56px;
+  --al-brand: #1A91F0;
+  --al-brand-dark: #1580d6;
+  --al-text: #374151;
+  --al-text-muted: #9ca3af;
+  --al-active-bg: #eff6ff;
+  --al-active-txt: #1A91F0;
+  --al-hover-bg: #f9fafb;
+  --al-border: #e5e7eb;
+  --al-border-soft: #f3f4f6;
+  --al-bg: #fafbfc;
+  --al-surface: #ffffff;
+  --al-orange: #FF6B00;
+  --al-orange-dk: #e55c00;
+  --al-dark: #1E2532;
+}
+
+/* ── Main content scroll area ─────────────────────────────────────────────── */
+.al-scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.al-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.al-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.al-scroll::-webkit-scrollbar-thumb {
+  background: var(--al-border);
+  border-radius: 10px;
+}
+
+/* ── AppLayout root ──────────────────────────────────────────────────────────── */
+.al-root {
+  background-color: var(--al-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ── Responsive Layout Offsets ────────────────────────────────────────────── */
+.al-content-col {
+  padding-bottom: var(--al-bottom-h);
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .al-content-col {
+    padding-left: 68px;
+    padding-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .al-content-col {
+    padding-left: var(--al-sidebar-w);
+    padding-bottom: 0;
+  }
+}
+
+/* ── Sidebar Responsive Visibility ───────────────────────────────────────── */
+.al-sidebar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .al-sidebar {
+    display: flex !important;
+  }
+}
+
+/* ── Bottom Bar Responsive Visibility ────────────────────────────────────── */
+.al-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .al-bottom-bar {
+    display: flex !important;
+  }
+}
+
+/* ── Top Bar Responsive Visibility ───────────────────────────────────────── */
+.al-topbar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .al-topbar {
+    display: flex !important;
+  }
+}
+
+/* ── Mobile Header Responsive Visibility ─────────────────────────────────── */
+.al-mob-header {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .al-mob-header {
+    display: flex !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE HEADER SHELL
+   Height: 56px | White bg | Bottom border | Sticky top
+   Layout: space-between, center-align
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-mob-shell {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--al-mobile-h);
+  background-color: var(--al-surface);
+  border-bottom: 1px solid var(--al-border);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  z-index: 40;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile brand icon: 26×26px blue rounded box */
+.al-mob-brand-icon {
+  width: 26px;
+  height: 26px;
+  background: var(--al-brand);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Mobile brand text */
+.al-mob-brand-name {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.3px;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.al-mob-brand-sub {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--al-text-muted);
+  line-height: 1.3;
+}
+
+/* ── TopBar Shell ─────────────────────────────────────────────────────────── */
+.al-topbar-shell {
+  position: sticky;
+  top: 0;
+  right: 0;
+  height: var(--al-topbar-h);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 24px;
+  z-index: 40;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESKTOP SIDEBAR SHELL
+   Width: 260px | Full height | White bg | Right border
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-sidebar-shell {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--al-sidebar-w);
+  background-color: var(--al-surface);
+  border-right: 1px solid var(--al-border);
+  flex-direction: column;
+  z-index: 50;
+  font-family: inherit;
+  overflow: visible;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HEADER BLOCK
+   Padding: 24px top, 20px sides | No hard bottom border (clean look)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-sidebar-header {
+  padding: 10px 20px 16px;
+  border-bottom: 1px solid transparent;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BRAND LOGO ICON
+   28×28px | 6px radius | Blue bg with white lines SVG
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-brand-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--al-brand);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(26, 145, 240, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BRAND TEXT
+   "resume.io": 20px 700 -0.4px tracking #111827
+   "by Muhammad Nabeel Ijaz": 11px regular muted gray
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-brand-name {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.4px;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.al-brand-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--al-text-muted);
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   USER PROFILE NAME & ROLE
+   Name: 16–17px 700 #111827
+   Role: 13px 400 muted → blue on hover
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-user-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  max-width: 160px;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.al-user-role {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--al-text-muted);
+  max-width: 160px;
+  margin: 2px 0 0;
+  line-height: 1.3;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.al-user-role:hover {
+  color: var(--al-brand);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   AVATAR RING + INNER
+   Total: 46×46px | 2px orange gradient padding ring
+   Inner: white 2px border + #f3f4f6 bg
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-avatar-ring {
+  border-radius: 50%;
+  padding: 2.5px;
+  background: linear-gradient(135deg, var(--al-orange), var(--al-orange-dk));
+  flex-shrink: 0;
+}
+
+.al-avatar-ring-lg {
+  width: 46px;
+  height: 46px;
+}
+
+.al-avatar-ring-sm {
+  width: 36px;
+  height: 36px;
+}
+
+.al-avatar-ring-mob {
+  width: 38px;
+  height: 38px;
+}
+
+.al-avatar-inner {
+  width: 100%;
+  height: 100%;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SCORE BADGE
+   Abs bottom-right -4px | 11px 700 white | Orange gradient | 10px radius
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-score-badge {
+  position: absolute;
+  background: linear-gradient(135deg, var(--al-orange), var(--al-orange-dk));
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  line-height: 1.2;
+}
+
+.al-score-badge-lg {
+  bottom: -4px;
+  right: -4px;
+  font-size: 11px;
+  padding: 2px 6px;
+}
+
+.al-score-badge-sm {
+  bottom: -3px;
+  right: -3px;
+  font-size: 9px;
+  padding: 1px 4px;
+}
+
+.al-score-badge-mob {
+  bottom: -3px;
+  right: -3px;
+  font-size: 10px;
+  padding: 1px 5px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAV AREA PADDING
+   8px top/bottom, 12px horizontal (spec)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-nav-pad {
+  padding: 8px 12px;
+}
+
+.al-nav-pad-sm {
+  padding: 8px 6px;
+}
+
+.al-nav-scroll {
+  position: relative;
+  overflow-x: visible;
+  z-index: 1;
+}
+
+/* Slim custom scrollbar */
+.al-nav-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.al-nav-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.al-nav-scroll::-webkit-scrollbar-thumb {
+  background: var(--al-border);
+  border-radius: 10px;
+}
+
+.al-nav-scroll:hover::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NAV BUTTON (ROW)
+   15px 500 #4b5563 | 10px 14px padding | 10px radius | 4px margin-bottom
+   Active: #eff6ff bg | #1A91F0 text 600
+   Hover: #f9fafb bg
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #4b5563;
+  font-weight: 800;
+  font-size: 15px;
+  text-align: left;
+  transition: background-color 0.15s, color 0.15s;
+  margin-bottom: 3px;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+.al-nav-btn:hover:not(.al-nav-active) {
+  background: var(--al-hover-bg);
+}
+
+.al-nav-btn.al-nav-active {
+  background: var(--al-active-bg);
+  color: var(--al-brand);
+  font-weight: 600;
+}
+
+.al-nav-active-txt {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--al-active-txt);
+}
+
+.al-nav-inactive-txt {
+  font-size: 15px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+/* Icon-only mode (tablet collapsed) */
+.al-nav-btn-icon {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BADGE "NEW"
+   10px 700 uppercase | Blue bg white text | 3px 6px pad | 6px radius
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-badge {
+  background: var(--al-brand);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* Badge dot (icon-only sidebar) */
+.al-badge-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  background: var(--al-brand);
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SIDEBAR FOOTER  (Chrome Extension CTA)
+   Pinned bottom | 1px #f3f4f6 top border | 10px padding
+   14px 500 secondary gray
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-sidebar-footer {
+  padding: 10px;
+  border-top: 1px solid var(--al-border-soft);
+  flex-shrink: 0;
+}
+
+.al-footer-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.15s;
+  text-align: left;
+}
+
+.al-footer-cta:hover {
+  background: var(--al-hover-bg);
+}
+
+.al-footer-cta-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  line-height: 1.3;
+}
+
+/* Chrome icon wrapper: 22×22px */
+.al-chrome-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TABLET SIDEBAR (640–1023px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-tablet-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: var(--al-surface);
+  border-right: 1px solid var(--al-border);
+  display: none;
+  flex-direction: column;
+  z-index: 50;
+  font-family: inherit;
+  transition: width 0.2s ease;
+  overflow: visible;
+}
+
+.al-tablet-avatar-header {
+  padding: 16px 0 12px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid var(--al-border-soft);
+  flex-shrink: 0;
+}
+
+.al-expand-btn {
+  position: absolute;
+  top: 50%;
+  right: -12px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--al-surface);
+  border: 1px solid var(--al-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 60;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE BOTTOM BAR (<640px)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-bottom-shell {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 68px;
+  background-color: var(--al-surface);
+  border-top: 1px solid var(--al-border);
+  justify-content: space-around;
+  align-items: center;
+  z-index: 50;
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.05);
+  font-family: inherit;
+}
+
+.al-tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  gap: 4px;
+  padding-top: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.al-tab-btn:active {
+  opacity: 0.7;
+}
+
+.al-tab-label-active {
+  font-weight: 600;
+  color: var(--al-brand);
+}
+
+.al-tab-label-inactive {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* AI spinner ring */
+.al-ai-spinner {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2.5px solid transparent;
+  border-top-color: var(--al-brand);
+  border-right-color: #a855f7;
+  border-bottom-color: #f97316;
+  border-left-color: var(--al-brand);
+  animation: al-spin 2s linear infinite;
+}
+
+@keyframes al-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOBILE "MORE SERVICES" SHEET
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-more-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--al-surface);
+  border-radius: 20px 20px 0 0;
+  z-index: 70;
+  max-height: 80vh;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.al-sheet-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--al-border-soft);
+  flex-shrink: 0;
+}
+
+.al-sheet-items {
+  padding: 8px 12px;
+}
+
+.al-sheet-item-active {
+  color: var(--al-brand);
+}
+
+.al-sheet-item-inactive {
+  color: #374151;
+}
+
+.al-sheet-scroll {
+  overflow-y: auto;
+  max-height: calc(80vh - 60px);
+  overscroll-behavior: contain;
+}
+
+.al-sheet-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.al-sheet-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.al-sheet-scroll::-webkit-scrollbar-thumb {
+  background: var(--al-border);
+  border-radius: 10px;
+}
+
+.al-sheet-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 8px;
+  border: none;
+  border-bottom: 1px solid var(--al-hover-bg);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background-color 0.12s;
+}
+
+.al-sheet-btn:hover {
+  background: var(--al-hover-bg);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLYOUT SUBMENU
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-flyout-menu {
+  position: fixed;
+  width: 240px;
+  max-height: calc(100vh - 16px);
+  padding: 4px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: 90;
+  border: 1px solid #f3f4f6;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.al-flyout-menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -10px;
+  width: 10px;
+  height: 100%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SHARED SHADOWS / ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-dropdown-shadow {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.al-flyout-shadow {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+.al-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 60;
+  backdrop-filter: blur(1px);
+}
+
+.al-slide-up {
+  animation: al-slide-up 0.22s ease-out;
+}
+
+@keyframes al-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.al-chevron {
+  transition: transform 0.2s ease;
+}
+
+.al-chevron-open {
+  transform: rotate(180deg);
+}
+
+.al-chevron-closed {
+  transform: rotate(0deg);
+}
+
+.al-progress-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 9999px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOPBAR ELEMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+.al-icon-btn {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--al-surface);
+  border: 1px solid var(--al-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+
+.al-icon-btn:hover {
+  background: var(--al-hover-bg);
+}
+
+.al-upgrade-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--al-dark);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background-color 0.15s;
+}
+
+.al-upgrade-btn:hover {
+  background: #2d3748;
+}
+
+.al-secondary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--al-surface);
+  color: var(--al-text);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--al-border);
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: background-color 0.15s;
+}
+
+.al-secondary-btn:hover {
+  background: var(--al-hover-bg);
+}
+
+.al-page-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  font-family: inherit;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.15s;
+}
+
+.al-page-dropdown:hover {
+  background: #f3f4f6;
+}
+
+.al-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .al-sidebar {
+    display: none !important;
+  }
+
+  .al-tablet-sidebar {
+    display: flex !important;
+  }
+
+  .al-bottom-bar {
+    display: none !important;
+  }
+
+  .al-content-col {
+    padding-left: 68px !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 639px) {
+  .al-sidebar {
+    display: none !important;
+  }
+
+  .al-tablet-sidebar {
+    display: none !important;
+  }
+
+  .al-bottom-bar {
+    display: flex !important;
+  }
+}

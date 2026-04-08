@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 260" fill="none">
+  <!-- Cover letter document, right-facing promo illustration -->
+  <rect x="100" y="30" width="160" height="200" rx="12" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+  <rect x="112" y="42" width="136" height="176" rx="10" fill="white" stroke="#c7d2fe" stroke-width="1.5"/>
+  <!-- Letter header area -->
+  <rect x="124" y="56" width="60" height="7" rx="3" fill="#4338ca" opacity="0.9"/>
+  <rect x="124" y="68" width="45" height="5" rx="2.5" fill="#6366f1" opacity="0.5"/>
+  <!-- Divider -->
+  <line x1="122" y1="84" x2="238" y2="84" stroke="#e0e7ff" stroke-width="1.5"/>
+  <!-- Body text lines -->
+  <rect x="122" y="94" width="112" height="4" rx="2" fill="#6b7280" opacity="0.55"/>
+  <rect x="122" y="103" width="105" height="4" rx="2" fill="#6b7280" opacity="0.45"/>
+  <rect x="122" y="112" width="112" height="4" rx="2" fill="#6b7280" opacity="0.4"/>
+  <rect x="122" y="121" width="88" height="4" rx="2" fill="#6b7280" opacity="0.35"/>
+  <rect x="122" y="137" width="112" height="4" rx="2" fill="#6b7280" opacity="0.5"/>
+  <rect x="122" y="146" width="98" height="4" rx="2" fill="#6b7280" opacity="0.4"/>
+  <rect x="122" y="155" width="112" height="4" rx="2" fill="#6b7280" opacity="0.35"/>
+  <rect x="122" y="164" width="70" height="4" rx="2" fill="#6b7280" opacity="0.3"/>
+  <!-- Signature -->
+  <rect x="122" y="182" width="50" height="4" rx="2" fill="#4338ca" opacity="0.5"/>
+  <rect x="122" y="191" width="35" height="4" rx="2" fill="#6366f1" opacity="0.35"/>
+  <!-- Envelope icon top-right -->
+  <rect x="218" y="48" width="24" height="18" rx="3" fill="#6366f1" opacity="0.2" stroke="#6366f1" stroke-width="1.5"/>
+  <polyline points="218,48 230,60 242,48" stroke="#6366f1" stroke-width="1.5" fill="none"/>
+  <!-- Decorative blobs -->
+  <circle cx="48" cy="60" r="25" fill="#fde68a" opacity="0.55"/>
+  <circle cx="35" cy="195" r="18" fill="#fbcfe8" opacity="0.5"/>
+  <circle cx="272" cy="220" r="14" fill="#a7f3d0" opacity="0.5"/>
+</svg>
